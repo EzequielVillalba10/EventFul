@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Terrazas con luces - Eventful</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --accent: #ff6b00;
+      --surface: #fff;
+      --muted: #777;
+      --card-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #fffaf5;
+      color: #111;
+    }
+    .app-shell {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header.topbar {
+      background: #fff;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .small-back {
+      color: #111;
+      text-decoration: none;
+    }
+    main.content {
+      padding: 12px;
+      flex: 1;
+    }
+
+    /* Tarjetas */
+    .terrace-card {
+      background: var(--surface);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 18px;
+    }
+    .terrace-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .terrace-info {
+      padding: 12px;
+    }
+    .terrace-info h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 4px 0 8px 0;
+    }
+    .price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+    .btn-reservar {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-reservar:hover {
+      background: #e66000;
+    }
+
+    /* Barra inferior */
+    .bottom-nav {
+      background: #fff;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0;
+      position: sticky;
+      bottom: 0;
+    }
+    .bottom-nav .nav-item {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .bottom-nav .active {
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="top-row">
+        <a href="index.html" class="small-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <h1 class="brand">Terrazas con luces</h1>
+        <div style="width:30px;"></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Terraza 1 -->
+      <div class="terrace-card">
+        <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800" alt="Terraza con luces cálidas">
+        <div class="terrace-info">
+          <h3>Terraza Luminosa</h3>
+          <p class="meta">⭐ 4.9 · Hasta 50 personas · Palermo</p>
+          <p class="price">$400 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Terraza 2 -->
+      <div class="terrace-card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/19/30/3c/a7/view-of-the-bar-and-band.jpg?w=900&h=-1&s=1" alt="Terraza moderna">
+        <div class="terrace-info">
+          <h3>Sky Light Lounge</h3>
+          <p class="meta">⭐ 5.0 · Hasta 80 personas · Recoleta</p>
+          <p class="price">$520 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Terraza 3 -->
+      <div class="terrace-card">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" alt="Terraza boho chic">
+        <div class="terrace-info">
+          <h3>Boho Sunset</h3>
+          <p class="meta">⭐ 4.8 · Hasta 60 personas · Zona Norte</p>
+          <p class="price">$480 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Terraza 4 -->
+      <div class="terrace-card">
+        <img src="https://conilhome.com/wp-content/uploads/2025/04/terraza-del-Carruaje-Conil-1.webp" alt="Terraza romántica">
+        <div class="terrace-info">
+          <h3>Terraza Noctiluca</h3>
+          <p class="meta">⭐ 4.7 · Hasta 70 personas · Belgrano</p>
+          <p class="price">$450 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Inicio</span></a>
+      <a href="alquilar-pileta.html" class="nav-item"><i class="fa-solid fa-water-ladder"></i><span>Piletas</span></a>
+      <a href="alquilar-terraza.html" class="nav-item active"><i class="fa-solid fa-sun"></i><span>Terrazas</span></a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-user"></i><span>Perfil</span></a>
+    </nav>
+  </div>
+</body>
+</html>

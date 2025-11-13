@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Espacios con pileta - Eventful</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    :root {
+      --accent: #008cff;
+      --surface: #fff;
+      --muted: #777;
+      --card-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: #f4f9ff;
+      color: #111;
+    }
+    .app-shell {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header.topbar {
+      background: #fff;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+    .small-back {
+      color: #111;
+      text-decoration: none;
+    }
+    main.content {
+      padding: 12px;
+      flex: 1;
+    }
+
+    /* Tarjetas de lugares */
+    .pool-card {
+      background: var(--surface);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      margin-bottom: 18px;
+    }
+    .pool-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .pool-info {
+      padding: 12px;
+    }
+    .pool-info h3 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+    .meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 4px 0 8px 0;
+    }
+    .price {
+      font-weight: 700;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+    .btn-reservar {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--accent);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-reservar:hover {
+      background: #0075db;
+    }
+
+    /* Barra inferior */
+    .bottom-nav {
+      background: #fff;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-around;
+      padding: 8px 0;
+      position: sticky;
+      bottom: 0;
+    }
+    .bottom-nav .nav-item {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #555;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .bottom-nav .active {
+      color: var(--accent);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="top-row">
+        <a href="index.html" class="small-back"><i class="fa-solid fa-arrow-left"></i></a>
+        <h1 class="brand">Espacios con pileta</h1>
+        <div style="width:30px;"></div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Card 1 -->
+      <div class="pool-card">
+        <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/585164635.jpg?k=a831ae56a0c3f97a3f02f15bffc4e1f1182b9dd561388e608929659027df71f8&o=" alt="Pileta jardín norte">
+        <div class="pool-info">
+          <h3>Jardín Norte - Pileta y parrilla</h3>
+          <p class="meta">⭐ 4.9 · Hasta 60 personas · Zona Norte</p>
+          <p class="price">$300 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="pool-card">
+        <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800" alt="Pileta con deck">
+        <div class="pool-info">
+          <h3>Sol & Agua - Deck y quincho</h3>
+          <p class="meta">⭐ 4.8 · Hasta 80 personas · Palermo</p>
+          <p class="price">$450 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="pool-card">
+        <img src="https://images.unsplash.com/photo-1523413651479-597eb2da0ad6?w=800" alt="Pileta vista jardín">
+        <div class="pool-info">
+          <h3>La Estación Verde</h3>
+          <p class="meta">⭐ 4.7 · Hasta 50 personas · Belgrano</p>
+          <p class="price">$380 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="pool-card">
+        <img src="https://www.pinturaslepanto.com/archivos/image/_noticias/exterior.jpg" alt="Pileta moderna">
+        <div class="pool-info">
+          <h3>Terraza Azul</h3>
+          <p class="meta">⭐ 5.0 · Hasta 100 personas · San Isidro</p>
+          <p class="price">$500 / hora</p>
+          <a href="reserva.html" class="btn-reservar">Reservar</a>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <a href="index.html" class="nav-item"><i class="fa-solid fa-house"></i><span>Inicio</span></a>
+      <a href="alquilar-pileta.html" class="nav-item active"><i class="fa-solid fa-water-ladder"></i><span>Piletas</span></a>
+      <a href="#" class="nav-item"><i class="fa-regular fa-bookmark"></i><span>Favoritos</span></a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-user"></i><span>Perfil</span></a>
+    </nav>
+  </div>
+</body>
+</html>
