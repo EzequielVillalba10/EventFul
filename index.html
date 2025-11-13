@@ -15,7 +15,7 @@
 </head>
 <body>
   <div id="loader">
-  <img src="logo.jpg" alt="Eventful" class="loader-logo">
+  <img src="logo.gif" alt="Eventful" class="loader-logo">
 </div>
   <div class="app-shell">
     <!-- Header / Hero -->
@@ -197,8 +197,11 @@
   <script>
   window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
-    loader.style.opacity = "0";
-    setTimeout(() => loader.style.display = "none", 500);
+    // Espera mínimo 1.5 segundos antes de ocultar
+    setTimeout(() => {
+      loader.style.opacity = "0";
+      setTimeout(() => loader.style.display = "none", 500);
+    }, 1500);
   });
 </script>
 </body>
