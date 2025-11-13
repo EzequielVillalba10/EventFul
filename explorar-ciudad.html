@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Explorar - Mapa (simulado)</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="" crossorigin=""/>
+
+  <!-- Font Awesome para iconos -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --accent:#07a6c9;
+      --bg:#f6f8fa;
+      --card:#ffffff;
+      --muted:#666;
+    }
+    html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;background:var(--bg);color:#111}
+    .app{max-width:980px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column}
+    header{background:var(--card);padding:12px 16px;display:flex;align-items:center;gap:12px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+    .brand{font-weight:800;font-size:18px}
+    .container{display:flex;flex:1;gap:12px;padding:12px}
+    /* map + list layout */
+    #map{flex:1;min-height:60vh;border-radius:12px;overflow:hidden;box-shadow:0 6px 20px rgba(10,10,10,0.06)}
+    .list{width:360px;max-width:40%;display:flex;flex-direction:column;gap:10px}
+    .list .card{background:var(--card);padding:10px;border-radius:10px;box-shadow:0 6px 18px rgba(10,10,10,0.06);display:flex;gap:10px;align-items:center}
+    .list .card img{width:84px;height:64px;object-fit:cover;border-radius:8px;flex-shrink:0}
+    .list h4{margin:0;font-size:15px;color:var(--accent)}
+    .meta{font-size:13px;color:var(--muted);margin-top:4px}
+    .price{font-weight:700;margin-top:6px}
+    .btn-small{background:var(--accent);color:#fff;padding:8px 10px;border-radius:8px;text-decoration:none;font-size:13px}
+    /* mobile responsive: map above, list below */
+    @media(max-width:880px){
+      .container{flex-direction:column;padding:10px}
+      #map{min-height:52vh}
+      .list{width:100%;max-width:unset}
+    }
+
+    /* Marker HTML icon */
+    .marker-html {
+      display:flex;align-items:center;justify-content:center;
+      width:36px;height:36px;border-radius:10px;color:#fff;font-size:16px;
+      box-shadow:0 6px 18px rgba(10,10,10,0.12);
+      border:2px solid rgba(255,255,255,0.6);
+    }
+    .marker-pool{background:#0ea5a4}
+    .marker-terrace{background:#f97316}
+    .marker-salon{background:#2563eb}
+
+    /* Popup image */
+    .popup-card img{width:220px;height:120px;object-fit:cover;border-radius:8px;display:block;margin-bottom:8px}
+    .popup-card .title{font-weight:700;color:var(--accent);margin-bottom:4px}
+    .popup-card .small{font-size:13px;color:var(--muted);margin-bottom:6px}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <div class="brand">eventful — Explorar: Buenos Aires</div>
+    </header>
+
+    <div class="container">
+      <div id="map"></div>
+
+      <div class="list" id="list">
+        <!-- Lista generada por JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="" crossorigin=""></script>
+
+  <script>
+    // Datos simulados de salones (coordenadas en Buenos Aires)
+    const lugares = [
+      {
+        id: 1,
+        tipo: 'pileta',
+        title: 'Jardín Norte - Pileta y parrilla',
+        desc: 'Capacidad 60 · Parrilla · Música permitida',
+        price: '$300 / hora',
+        coords: [-34.537, -58.443], // Palermo approximated
+        img: 'https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?w=800'
+      },
+      {
+        id: 2,
+        tipo: 'terraza',
+        title: 'Terraza Luminosa',
+        desc: 'Terraza con guirnaldas y barra',
+        price: '$400 / hora',
+        coords: [-34.590, -58.410], // Recoleta approximated
+        img: 'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800'
+      },
+      {
+        id: 3,
+        tipo: 'salon',
+        title: 'Salón Ártico - Climatizado',
+        desc: 'Ideal para eventos en frío, capacidad 120',
+        price: '$600 / hora',
+        coords: [-34.572, -58.422], // Belgrano approximated
+        img: 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800'
+      },
+      {
+        id: 4,
+        tipo: 'pileta',
+        title: 'Sol & Agua - Deck y quincho',
+        desc: 'Pileta + deck · capacidad 80',
+        price: '$450 / hora',
+        coords: [-34.608, -58.373], // Puerto Madero approximated
+        img: 'https://images.unsplash.com/photo-1505691938895-1758d7feb511?w=800'
+      },
+      {
+        id: 5,
+        tipo: 'terraza',
+        title: 'Sky Light Lounge',
+        desc: 'Rooftop con vista, perfecto para afters',
+        price: '$520 / hora',
+        coords: [-34.595, -58.380], // Microcentro approximated
+        img: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?w=800'
+      }
+    ];
+
+    // Inicializar mapa
+    const map = L.map('map', { zoomControl: false }).setView([-34.60, -58.43], 12);
+
+    // Capa OSM
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Helper: crea un DivIcon con FontAwesome dentro
+    function makeIcon(tipo){
+      const el = document.createElement('div');
+      el.className = 'marker-html ' + (tipo === 'pileta' ? 'marker-pool' : tipo === 'terraza' ? 'marker-terrace' : 'marker-salon');
+      el.innerHTML = tipo === 'pileta' ? '<i class="fa-solid fa-water-ladder"></i>' : tipo === 'terraza' ? '<i class="fa-solid fa-lightbulb"></i>' : '<i class="fa-solid fa-snowflake"></i>';
+      return L.divIcon({ html: el, className: '', iconSize: [36,36], iconAnchor: [18,36], popupAnchor: [0,-36] });
+    }
+
+    // Mantener referencia markers por id
+    const markers = {};
+
+    // Crear markers y lista
+    const listEl = document.getElementById('list');
+
+    lugares.forEach(l => {
+      const marker = L.marker(l.coords, { icon: makeIcon(l.tipo) }).addTo(map);
+
+      const popupHtml = `
+        <div class="popup-card">
+          <img src="${l.img}" alt="${l.title}">
+          <div class="title">${l.title}</div>
+          <div class="small">${l.desc}</div>
+          <div style="margin-top:6px;font-weight:700;color:#111">${l.price}</div>
+          <div style="margin-top:8px"><a href="reserva.html?l=${l.id}" class="btn-small">Reservar</a></div>
+        </div>
+      `;
+      marker.bindPopup(popupHtml, { minWidth: 240 });
+
+      markers[l.id] = marker;
+
+      // Crear fila en lista
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <img src="${l.img}" alt="${l.title}">
+        <div style="flex:1">
+          <h4>${l.title}</h4>
+          <div class="meta">${l.desc}</div>
+          <div class="price">${l.price}</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <a class="btn-small" href="reserva.html?l=${l.id}">Reservar</a>
+        </div>
+      `;
+      // click en fila: mover mapa y abrir popup
+      card.addEventListener('click', (ev) => {
+        // prevenir click en el link interno de reservar
+        if (ev.target.closest('a')) return;
+        map.panTo(l.coords, { animate: true, duration: 0.6 });
+        markers[l.id].openPopup();
+      });
+
+      listEl.appendChild(card);
+    });
+
+    // Ajusta bounds para mostrar todos los markers
+    const group = new L.featureGroup(Object.values(markers));
+    map.fitBounds(group.getBounds().pad(0.3));
+
+    // Pequeña mejora táctil: abrir popup al tocar marker (ya por defecto lo hace)
+    // -- fin
+  </script>
+</body>
+</html>

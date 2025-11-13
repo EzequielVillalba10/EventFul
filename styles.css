@@ -34,11 +34,12 @@ body{
   background:linear-gradient(#fff,#fff);
   box-shadow: 0 10px 30px rgba(10,10,10,0.06);
   position:relative;
+  min-height:100vh;
 }
 
 /* Topbar / hero */
 .topbar{
-  padding: 18px var(--safe-padding) 8px;
+  padding: 12px var(--safe-padding) 8px;
   background: linear-gradient(180deg, #ffffff 0%, #fbfdfe 100%);
   border-bottom: 1px solid rgba(10,10,10,0.03);
 }
@@ -53,10 +54,14 @@ body{
   font-weight:800;
   letter-spacing:-0.5px;
   margin:0;
-  font-size:1.4rem;
+  font-size:1.25rem;
   color:#121212;
+  display:block;
 }
 
+.small-back { font-size:1rem; color:var(--muted); text-decoration:none; display:flex; align-items:center; gap:8px; }
+
+/* Profile button */
 .profile-btn{
   background:transparent;
   border:none;
@@ -66,7 +71,7 @@ body{
 
 /* Search */
 .search-wrap{
-  margin-top:12px;
+  margin-top:8px;
 }
 
 .search-form{
@@ -77,7 +82,7 @@ body{
 
 .search-form input{
   flex:1;
-  padding:12px 44px 12px 14px;
+  padding:10px 44px 10px 14px;
   border-radius:12px;
   border:1px solid rgba(10,10,10,0.06);
   background: #fbfdff;
@@ -228,6 +233,8 @@ body{
   border-radius:12px;
   overflow:hidden;
   box-shadow: var(--card-shadow);
+  text-decoration:none;
+  color:inherit;
 }
 
 .mini-card img{
@@ -240,6 +247,10 @@ body{
   padding:8px;
   font-size:0.9rem;
 }
+
+/* Make mini-card clickable whole area */
+.mini-card.clickable { cursor:pointer; }
+.mini-card-link { text-decoration:none; color:inherit; }
 
 /* Cities */
 .cities-row{
@@ -359,6 +370,7 @@ body{
   scrollbar-width: none;
 }
 .horizontal-scroll::-webkit-scrollbar, .cities-row::-webkit-scrollbar, .quick-filters::-webkit-scrollbar{ display:none }
+
 #loader {
   position: fixed;
   top: 0;
@@ -381,4 +393,21 @@ body{
 @keyframes fade {
   from { opacity: 0.4; }
   to { opacity: 1; }
+}
+
+
+.video-container-vertical {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #000;
+  padding: 10px;
+}
+
+.video-container-vertical iframe {
+  border-radius: 12px;
+  max-width: 100%;
+  height: auto;
 }
