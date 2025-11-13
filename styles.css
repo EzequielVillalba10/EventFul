@@ -359,3 +359,25 @@ body{
   scrollbar-width: none;
 }
 .horizontal-scroll::-webkit-scrollbar, .cities-row::-webkit-scrollbar, .quick-filters::-webkit-scrollbar{ display:none }
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.loader-logo {
+  width: 150px;
+  animation: fade 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes fade {
+  from { opacity: 0.4; }
+  to { opacity: 1; }
+}
