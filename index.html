@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Eventful - Inicio</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Header / Hero -->
+    <header class="topbar">
+      <div class="top-row">
+        <h1 class="brand">eventful</h1>
+        <button class="profile-btn" aria-label="perfil"><i class="fa-regular fa-circle-user"></i></button>
+      </div>
+
+      <div class="search-wrap">
+        <form class="search-form" onsubmit="return false;">
+          <input type="text" placeholder="¿Qué tipo de evento querés organizar? (ej: casamiento, cumpleaños)" aria-label="buscar">
+          <button class="search-btn" aria-label="buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+
+        <div class="quick-filters">
+          <button class="chip">🎂 Cumpleaños</button>
+          <button class="chip">💍 Casamientos</button>
+          <button class="chip">💼 Corporativo</button>
+          <button class="chip">🎤 Conciertos</button>
+          <button class="chip">🎥 Rodajes</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Ofertas / banner -->
+      <section class="banner-oferta">
+        <div class="oferta-left">
+          <strong>20% OFF</strong>
+          <span>Reservas entre semana</span>
+        </div>
+        <a class="oferta-cta" href="#">Ver ofertas</a>
+      </section>
+
+      <!-- Destacados (scroll horizontal) -->
+      <section class="section">
+        <h2>Destacados 🔥</h2>
+        <div class="horizontal-scroll cards-row">
+          <article class="card featured">
+            <img src="https://larural.com.ar/wp-content/uploads/El-Central-patio-2.jpg" alt="Salón 1">
+            <div class="card-body">
+              <h3>Doble Salón</h3>
+              <p class="meta">⭐ 4.9 · $250/hora</p>
+            </div>
+            <button class="fav"><i class="fa-regular fa-heart"></i></button>
+          </article>
+
+          <article class="card featured">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=60&auto=format&fit=crop" alt="Terraza">
+            <div class="card-body">
+              <h3>Terraza Panorama</h3>
+              <p class="meta">⭐ 4.8 · $200/hora</p>
+            </div>
+            <button class="fav"><i class="fa-regular fa-heart"></i></button>
+          </article>
+
+          <article class="card featured">
+            <img src="https://images.unsplash.com/photo-1542317854-9f3166f8b9d0?w=1200&q=60&auto=format&fit=crop" alt="Loft">
+            <div class="card-body">
+              <h3>Loft Luminoso</h3>
+              <p class="meta">⭐ 4.7 · $180/hora</p>
+            </div>
+            <button class="fav"><i class="fa-regular fa-heart"></i></button>
+          </article>
+        </div>
+      </section>
+
+      <!-- Recomendaciones por temporada -->
+      <section class="section">
+        <h2>Recomendado esta temporada ☀️</h2>
+        <div class="horizontal-scroll small-cards">
+          <div class="mini-card">
+            <img src="https://resizer.glanacion.com/resizer/v2/foto-de-un-jardin-con-solarium-y-pileta-con-A6D5SYCHRBDFVH2WKSI3BYSU7Y.jpg?auth=0e7589fdd9169339f9b41e5fea53092c0636f868512cb5e611451ba125921a3b&width=780&height=520&quality=70&smart=true" alt="pileta">
+            <div class="mini-body">
+              <strong>Espacios con pileta</strong>
+              <small>Perfecto para verano</small>
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <img src="https://metalyluz.com/wp-content/uploads/2018/03/guirnalda_efecto-cupula.jpg" alt="terraza noche">
+            <div class="mini-body">
+              <strong>Terrazas con luces</strong>
+              <small>Para afters y cenas</small>
+            </div>
+          </div>
+
+          <div class="mini-card">
+            <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&q=60&auto=format&fit=crop" alt="salon">
+            <div class="mini-body">
+              <strong>Salones climatizados</strong>
+              <small>Ideal en frío</small>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Explorar por ciudad -->
+      <section class="section">
+        <h2>Explorá por ciudad 📍</h2>
+        <div class="cities-row">
+          <div class="city">
+            <img src="https://cdn2.paraty.es/parkroyal-corpo/images/29581ba3c89a845" alt="ciudad1">
+            <p>Buenos Aires</p>
+          </div>
+          <div class="city">
+            <img src="https://www.barnes-madrid.com/rails/active_storage/disk/eyJfcmFpbHMiOnsiZGF0YSI6eyJrZXkiOiJxZ3ltb2p5OTJoaWE1MXFnNnZxeTBjaTA3eTl4IiwiZGlzcG9zaXRpb24iOiJpbmxpbmU7IGZpbGVuYW1lPVwiJTNGRXMgc2VndXJvIHBhc2VhciBwb3IgTWFkcmlkIGRlIG5vY2hlLndlYnBcIjsgZmlsZW5hbWUqPVVURi04JyclQzIlQkZFcyUyMHNlZ3VybyUyMHBhc2VhciUyMHBvciUyME1hZHJpZCUyMGRlJTIwbm9jaGUud2VicCIsImNvbnRlbnRfdHlwZSI6ImltYWdlL3dlYnAiLCJzZXJ2aWNlX25hbWUiOiJwcm9kdWN0aW9uIn0sInB1ciI6ImJsb2Jfa2V5In19--11271998277017f7898ce137508e75e64c2e085c/%C2%BFEs%20seguro%20pasear%20por%20Madrid%20de%20noche.webp" alt="ciudad2">
+            <p>Madrid</p>
+          </div>
+          <div class="city">
+            <img src="https://www.barcelo.com/guia-turismo/wp-content/uploads/que-visitar-en-barcelona-1.jpg" alt="ciudad3">
+            <p>Barcelona</p>
+          </div>
+          <div class="city">
+            <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=800&q=60&auto=format&fit=crop" alt="ciudad4">
+            <p>Valencia</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Opiniones / reseñas -->
+      <section class="section">
+        <h2>Opiniones</h2>
+        <div class="reviews">
+          <article class="review">
+            <img class="avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=60&auto=format&fit=crop" alt="avatar">
+            <div class="rev-body">
+              <strong>María G.</strong>
+              <p>"Excelente atención y el salón fue tal cual las fotos. Recomendado 100%."</p>
+            </div>
+          </article>
+
+          <article class="review">
+            <img class="avatar" src="https://s.yimg.com/ny/api/res/1.2/CkSNIGBy0MPm7oQRWAv7Jw--/YXBwaWQ9aGlnaGxhbmRlcjt3PTk2MDtoPTU0MA--/https://media.zenfs.com/es/bbc_news_mundo_254/8a2d0afe5aa4fb0ab767d9c57ad4fee3" alt="avatar">
+            <div class="rev-body">
+              <strong>Lucas P.</strong>
+              <p>"La terraza tuvo todo lo necesario: luces, sonido y muy buena comunicación."</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Inspirate / blog cards -->
+      <section class="section">
+        <h2>Inspirate ✨</h2>
+        <div class="insp-row">
+          <article class="insp-card">
+            <img src="https://images.unsplash.com/photo-1503602642458-232111445657?w=1200&q=60&auto=format&fit=crop" alt="decor">
+            <div class="insp-body">
+              <h3>Decoraciones low-cost para tu evento</h3>
+              <p>Ideas rápidas para ambientar sin gastar de más.</p>
+            </div>
+          </article>
+
+          <article class="insp-card">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1200&q=60&auto=format&fit=crop" alt="timeline">
+            <div class="insp-body">
+              <h3>Checklist: 30 días antes del evento</h3>
+              <p>Todo lo que no podés olvidarte.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- Footer spacer to show bottom nav -->
+      <div style="height:86px"></div>
+    </main>
+
+    <!-- Bottom nav (fijo) -->
+    <nav class="bottom-nav">
+      <a href="#" class="nav-item active"><i class="fa-solid fa-house"></i><span>Inicio</span></a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-magnifying-glass"></i><span>Buscar</span></a>
+      <a href="#" class="nav-item"><i class="fa-regular fa-bookmark"></i><span>Favoritos</span></a>
+      <a href="#" class="nav-item"><i class="fa-solid fa-user"></i><span>Perfil</span></a>
+    </nav>
+  </div>
+</body>
+</html>
